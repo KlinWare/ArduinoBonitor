@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.klinware.arduinobonitor.BonitorActivity">
+
+    <!-- Options Buttons -->
+    <LinearLayout
+        android:id="@+id/monitorOptions"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#00979C">
+
+        <ToggleButton
+            android:id="@+id/btnRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textOff="@string/btnRefresh"
+            android:textOn="@string/btnNormal"
+            android:checked="false"
+            android:onClick="click"
+            android:background="#CCCCCC"/>
+
+        <ToggleButton
+            android:id="@+id/btnFreeze"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textOff="@string/btnFreeze"
+            android:textOn="@string/btnGoOn"
+            android:checked="false"
+            android:onClick="click"
+            android:background="#CCCCCC"/>
+
+        <ToggleButton
+            android:id="@+id/btnClean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:textOff="@string/btnClean"
+            android:textOn="@string/btnClean"
+            android:onClick="click"
+            android:background="#CCCCCC"/>
+
+    </LinearLayout>
+
+    <!-- Monitor Buttons -->
+    <RelativeLayout
+        android:id="@+id/monitorBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@id/monitorOptions"
+        android:background="#00979C">
+        <!--
+        android:background="#09835E"
+        -->
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:text="@string/btnSend"
+            android:layout_margin="5dp"
+            android:onClick="click"
+            android:background="#CCCCCC"/>
+
+        <EditText
+            android:id="@+id/txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/btnSend"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="#FFFFFF"/>
+
+    </RelativeLayout>
+
+    <!-- Monitor outputs -->
+    <ScrollView
+        android:id="@+id/monitorScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/monitorBar"
+        android:layout_alignParentTop="true"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:id="@+id/monitorLinear"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
