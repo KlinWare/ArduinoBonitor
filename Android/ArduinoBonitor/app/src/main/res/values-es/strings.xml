@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="action_settings" translatable="false">Settings</string>
+
+    <!-- SplashActivity -->
+    <string name="app_name"              >Arduino Bonitor</string>
+    <string name="splashErrorNoBt1"      >El dispositivo no tiene Bluetooth</string>
+    <string name="splashErrorNoBt2"      >La app no funciona sin activar el Bluetooth</string>
+    <string name="splashBtON"            >Necesita activar el Bluetooth</string>
+
+    <!-- DevicesActivity -->
+    <string name="title_activity_devices">Dispositivos Bluetooth</string>
+    <string name="scanning"              >Escaneando...</string>
+    <string name="no_devices_found"      >Dispositivos BLuetooth no encontrados</string>
+    <string name="btnScan"               >Buscar dispositivos Bluetooth</string>
+    <string name="btError"               >Problemas con el Bluetooth</string>
+    <string name="connecting"            >Conectando...</string>
+
+    <!-- BonitorActivity -->
+    <string name="title_activity_bonitor">Monitor</string>
+    <string name="down"                  >Abajo</string>
+    <string name="up"                    >Arriba</string>
+    <string name="btnFreeze"             >Parar</string>
+    <string name="btnGoOn"               >Continuar</string>
+    <string name="btnClean"              >Limpiar</string>
+    <string name="btnSend"               >Enviar</string>
+    <string name="connected"             >Conectado</string>
+
+    <string name="hello_world"           >Hola mundo</string>
+</resources>

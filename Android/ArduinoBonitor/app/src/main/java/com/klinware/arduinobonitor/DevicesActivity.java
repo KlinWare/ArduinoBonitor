@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +19,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
 public class DevicesActivity extends Activity {
 
     // Log
@@ -27,7 +27,6 @@ public class DevicesActivity extends Activity {
     private ListView                    btList;
     // Bluetooth
     private Bluetooth                   bt;
-    //private ArrayAdapter<String>        btDevicesName;
     private boolean                     scanning = false;
     private boolean                     connecting = false;
 
@@ -35,7 +34,7 @@ public class DevicesActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_devices);
-        Log.e(TAG, "DevicesActivity");
+        Log.e(TAG, "DevicesActivity - onCreate()");
         // Views
         btList = (ListView)findViewById(R.id.btList);
         // Bluetooth
@@ -51,18 +50,16 @@ public class DevicesActivity extends Activity {
 
     // Start discovery BT devices
     private void discovery() {
-        Log.d(TAG, "discovery()");
+        Log.i(TAG, "DevicesActivity - discovery()");
         scanning = true;
         connecting = false;
         String[] scanBT = {getString(R.string.scanning)};
         btList.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, scanBT));
         // If we're already scanning BT devices, stop it
         if ( bt.scanning() ){
-            Log.i(TAG, "discovery() has been activated already, cancelDiscovery"); // Log
+            Log.v(TAG, "discovery() has been activated already, cancelDiscovery"); // Log
             bt.cancelScan();
         }
-        // If we/re already paired with another BT device
-        bt.closeAll();
         // IntenFilters for Bluetooth detection
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         this.registerReceiver(btReceiver, filter);
@@ -74,7 +71,7 @@ public class DevicesActivity extends Activity {
 
     // Click on Scan Button
     public void click(View v){
-        Log.d(TAG, "click() " + scanning);
+        Log.i(TAG, "DevicesActivity - click() " + scanning);
         if(!scanning){
             discovery();
         }
@@ -83,7 +80,7 @@ public class DevicesActivity extends Activity {
     // onResume
     protected void onResume(){
         super.onResume();
-        Log.d(TAG, "onResume");
+        Log.i(TAG, "DevicesActivity - onResume()");
         // BT devices selected
         btList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -92,14 +89,11 @@ public class DevicesActivity extends Activity {
                 if (!bt.isEmpty()) {
                     if (!scanning) {
                         // Begin connection
-                        String[] scanBT = {getString(R.string.connecting)};
-                        btList.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, scanBT));
-                        //BluetoothDevice d = bt.getElement(position);
-                        //bt.connection(d);
-                        bt.connection(bt.getElement(position));
                         connecting = true;
-                        startActivity(new Intent(DevicesActivity.this, BonitorActivity.class));
-                        //discovery();
+                        // Go to next Activity
+                        startActivity(new Intent(DevicesActivity.this, BonitorActivity.class).putExtra("DEVICE", position));
+                        // Return from BonitorActivity
+                        connecting = false;
                     }
                 }
             }
@@ -109,19 +103,19 @@ public class DevicesActivity extends Activity {
     // Back button pressed
     @Override
     public void onBackPressed(){
+        Log.e(TAG, "DevicesActivity - onBackPressed()");
         finish();
     }
 
     // onDestroy
     @Override
     protected void onDestroy(){
-        Log.e(TAG, "DevicesActivity - onDestroy");
+        Log.e(TAG, "DevicesActivity - onDestroy()");
         super.onDestroy();
         if ( bt.scanning() ){
             bt.cancelScan();
         }
         unregisterReceiver(btReceiver);
-        bt.closeAll();
         finish();
     }
 
@@ -167,7 +161,6 @@ public class DevicesActivity extends Activity {
             }
         }
     };
-
 
     /*
     @Override

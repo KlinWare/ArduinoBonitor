@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="action_settings"       >Settings</string>
+    <string name="action_settings" translatable="false">Settings</string>
 
     <!-- SplashActivity -->
     <string name="app_name"              >Arduino Bonitor</string>
@@ -16,18 +16,15 @@
     <string name="btError"               >Problems with Bluetooth</string>
     <string name="connecting"            >Connecting...</string>
 
-    <!--
-    <string name="connecting"            >Connecting...</string>
-    -->
-
     <!-- BonitorActivity -->
     <string name="title_activity_bonitor">Monitor</string>
-    <string name="btnRefresh"            >Refresh</string>
-    <string name="btnNormal"             >Normal</string>
+    <string name="down"                  >Down</string>
+    <string name="up"                    >Up</string>
     <string name="btnFreeze"             >Freeze</string>
     <string name="btnGoOn"               >Go on</string>
     <string name="btnClean"              >Clean</string>
     <string name="btnSend"               >Send</string>
+    <string name="connected"             >Connected</string>
 
     <string name="hello_world">Hello world!</string>
 </resources>
