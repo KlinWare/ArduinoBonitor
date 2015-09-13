@@ -22,7 +22,7 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        Log.e(TAG, "SplashActivity");
+        Log.e(TAG, "SplashActivity - onCreate()");
         // Bluetooth
         Bluetooth bt = Bluetooth.getInstance();
         // If the adapter is null, then Bluetooth is not supported
@@ -43,7 +43,7 @@ public class SplashActivity extends Activity {
 
     // onActivityResult
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.i(TAG, "onActivityResult");
+        Log.i(TAG, "SplashActivity - onActivityResult()");
         if( (requestCode == REQUEST_ENABLE_BT) && (resultCode == RESULT_OK) ){
             Log.v(TAG, "Bluetooth is activated, application begins"); // Log
             splash();
@@ -54,14 +54,23 @@ public class SplashActivity extends Activity {
         }
     }
 
+    // Splash time
     private void splash(){
-        Log.i(TAG,"splash()");
-        new Handler().postDelayed(new Runnable(){
-            public void run(){
+        Log.i(TAG,"SplashActivity - splash()");
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
                 // Wait SPLASH miliseconds & then go to next Activity
                 startActivity(new Intent(SplashActivity.this, DevicesActivity.class));
+                // Close app
                 finish();
             };
         }, SPLASH);
+    }
+
+    // onDestroy
+    @Override
+    protected void onDestroy(){
+        Log.e(TAG, "SplashActivity - onDestroy()");
+        super.onDestroy();
     }
 }

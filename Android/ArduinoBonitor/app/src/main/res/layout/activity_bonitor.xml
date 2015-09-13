@@ -12,19 +12,20 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:background="#00979C">
-
+        <!-- TopDown Button -->
         <ToggleButton
-            android:id="@+id/btnRefresh"
+            android:id="@+id/btnTopDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="5dp"
-            android:textOff="@string/btnRefresh"
-            android:textOn="@string/btnNormal"
+            android:textOff="@string/down"
+            android:textOn="@string/up"
             android:checked="false"
             android:onClick="click"
             android:background="#CCCCCC"/>
 
+        <!-- Freeze Button -->
         <ToggleButton
             android:id="@+id/btnFreeze"
             android:layout_width="wrap_content"
@@ -36,15 +37,14 @@
             android:checked="false"
             android:onClick="click"
             android:background="#CCCCCC"/>
-
-        <ToggleButton
+        <!-- Clean Button -->
+        <Button
             android:id="@+id/btnClean"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="5dp"
-            android:textOff="@string/btnClean"
-            android:textOn="@string/btnClean"
+            android:text="@string/btnClean"
             android:onClick="click"
             android:background="#CCCCCC"/>
 
@@ -57,10 +57,9 @@
         android:layout_height="50dp"
         android:layout_above="@id/monitorOptions"
         android:background="#00979C">
-        <!--
-        android:background="#09835E"
-        -->
+        <!-- android:background="#09835E" -->
 
+        <!-- Send Button -->
         <Button
             android:id="@+id/btnSend"
             android:layout_width="wrap_content"
@@ -70,7 +69,7 @@
             android:layout_margin="5dp"
             android:onClick="click"
             android:background="#CCCCCC"/>
-
+        <!-- Input Text -->
         <EditText
             android:id="@+id/txt"
             android:layout_width="match_parent"
